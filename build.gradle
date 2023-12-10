@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+allure {
+    report {
+        version.set("2.24.0")
+    }
+    adapter { // responsible for the 'allure-results' folder creation with test data in JSON
+        aspectjWeaver.set(true) // responsible fro the annotation @Step processing
+        frameworks {
+            junit5 { // test framework name
+                adapterVersion.set("2.24.0") // test framework and allure version
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testImplementation 'com.codeborne:selenide:7.0.2'
+    testImplementation 'io.qameta.allure:allure-selenide:2.25.0'
+}
+
+test {
+    useJUnitPlatform()
+}
