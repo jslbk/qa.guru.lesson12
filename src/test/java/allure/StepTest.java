@@ -46,8 +46,8 @@ public class StepTest {
 
         steps.openMainPage();
         steps.searchForTheRepository(REPOSITORY);
-        steps.openIssuesTab();
         steps.openRepositoryByLink(REPOSITORY);
+        steps.openIssuesTab();
         steps.searchIssueByNumber(ISSUE);
     }
 
